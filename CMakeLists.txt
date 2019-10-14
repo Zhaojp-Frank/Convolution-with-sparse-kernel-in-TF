@@ -6,7 +6,8 @@ include_directories(${Tensorflow_INCLUDE_DIRS})
 
 find_package(CUDA)
 
-set (CMAKE_CXX_FLAGS "--std=c++11 -fPIC -O2 -D_GLIBCXX_USE_CXX11_ABI=0 -D GOOGLE_CUDA=1")
+set (CMAKE_CXX_FLAGS "--std=c++11 -fPIC -O2 -D_GLIBCXX_USE_CXX11_ABI=0 -D GOOGLE_CUDA=1 -I/opt/tensorflow/tensorflow-source/")
+SET(CUDA_NVCC_FLAGS "--expt-relaxed-constexpr")
 
 set(CMAKE_BUILD_TYPE Debug)
 

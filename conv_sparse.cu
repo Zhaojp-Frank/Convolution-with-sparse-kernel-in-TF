@@ -1,7 +1,7 @@
 #define EIGEN_USE_GPU
 #include <cuda.h>
 #include <stdio.h>
-#include "tensorflow/core/util/cuda_kernel_helper.h"
+#include "/opt/tensorflow/tensorflow-source/tensorflow/core/util/gpu_kernel_helper.h"
 
 #include <iostream>
 #include <fstream>

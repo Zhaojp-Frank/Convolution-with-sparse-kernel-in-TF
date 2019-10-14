@@ -107,7 +107,7 @@ public:
 		//flatten tensors
 		auto a_flat = a_tensor.flat<dtype>();
 		auto k_flat = k_tensor.flat<dtype>();
-		if (debug_mode_) printf("shape: %d, %d\n", a_flat.size(),k_flat.size());
+		if (debug_mode_) printf("shape: %ld, %ld\n", a_flat.size(),k_flat.size());
 		OP_REQUIRES(context,
 			(int)k_shape.dim_size(0) == (int)k_shape.dim_size(1),
 			errors::InvalidArgument("Kernel height and width should be same"));
@@ -135,7 +135,7 @@ public:
 
 		//get flat version to fill
 		auto output = output_tensor->flat<dtype>();
-		if (debug_mode_) printf("output: %d\n", output.size());
+		if (debug_mode_) printf("output: %ld\n", output.size());
 
 		// Call the cuda kernel launcher
 		launchAddKernel<dtype>(a_flat.data(), k_flat.data(), output.data(), 
