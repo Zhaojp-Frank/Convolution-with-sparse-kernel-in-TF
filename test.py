@@ -10,7 +10,7 @@ import time
 
 # load op
 try:
-	_conv_sparse = tf.load_op_library('./build/libconv_sparse.so')
+	_conv_sparse = tf.load_op_library('/github/Convolution-with-sparse-kernel-in-TF/libconv_sparse.so')
 except Exception as e:
 	_conv_sparse = tf.load_op_library('./libconv_sparse.so')
 sparse_convolution = _conv_sparse.custom_convolution
@@ -40,11 +40,11 @@ result_TF = tf.nn.conv2d(inputT, kernelT, padding="SAME", strides=[1, stride, st
 with tf.Session() as sess:
 	start_time = time.time()
 	expected = np.array(sess.run(result_TF))
-	print "time buildin: %.3f" % ((time.time() - start_time) * 1000)
+	print ("time buildin: %.3f" % ((time.time() - start_time) * 1000))
 
 	start_time = time.time()
 	result = sess.run(result_Sparse)
-	print "time costumized: %.3f" % ((time.time() - start_time) * 1000)
-	print "result shape: ", result.shape, "expected shape: ", expected.shape
-	print "is calculation correct? ", (abs(result - expected) < tolerance).all()
+	print ("time costumized: %.3f" % ((time.time() - start_time) * 1000))
+	print ("result shape: ", result.shape, "expected shape: ", expected.shape)
+	print ("is calculation correct? ", (abs(result - expected) < tolerance).all())
 
